@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+
+/* top nation idea starts */	
+
+.idea-title1{
+	font-size: 50px;
+}
+.card .idea-title1{
+	text-decoration: none;
+	color: black;
+}
+.card .idea-title1:hover{
+	color: blue;
+}
+
+/*top nation idea ends*/
+
+
+/* second nation idea starts */
+.second-nation-idea{
+	max-width: 100%;
+	max-height: auto;
+	padding-bottom: 65px;
+
+}
+.second-nation-idea a{
+	text-decoration: none;
+	color: Moroon;
+	font-size: 26px;
+
+	
+}
+.second-nation-idea .idea-title2{
+	text-decoration: none;
+	color: black;
+	font-size: 26px;
+
+	
+}
+.second-nation-idea .idea-title2:hover{
+	color: blue;
+}
+.idea-description2{
+	font-size: 19px;
+	
+}
+
+/* second nation idea ends */
+
+
+
+/* nation ideas starts */
+.idea-nation{
+	margin-top: 58px;
+}
+.idea-nation .card{
+	height: 320px;
+}
+.idea-nation .nation-idea-title{
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+	padding-top: 5px;
+}
+.idea-nation .nation-idea-title:hover{
+	color: blue;
+}
+
+
+/* nation ideas ends */
+
+
+/* latest news starts */
+
+.latest-news a{
+	text-decoration: none;
+	color: black;
+}
+.latest-news a:hover{
+	color: blue;
+}
+
+
+/* latest news ends */
+
+
+
+</style>
+
+
+
+<!-- <div class="container my-5"> -->
+<div class="row my-5">
+
+
+
+		<!--  second nation idea starts -->
+		<div class="row">
+			{% for idea in ideas %}
+			<div class="col-md-6">
+				<div class="card text-center my-2 second-nation-idea">
+					<a href="{% url 'blog:idea_detail' idea.id %}" class="my-3">
+					<img src="{{idea.photo.url}}" style="width: 180px; height: 180px; border-radius: 50%;">
+					</a><br>
+
+					<a href="" class="author">{{idea.author}}
+					</a>
+
+					<a href="" class="idea-title2">{{idea.title}}</a><br>
+					<p class="idea-description2">
+						<small style="color: grey;">{{idea.created}}</small><br>
+					{{idea.description|truncatewords:15}}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<!-- second nation idea ends -->
+	</div>
+
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+

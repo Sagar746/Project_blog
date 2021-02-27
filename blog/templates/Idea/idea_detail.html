@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row my-4">
+	<div class=" card col-md-12 text-center" style="max-width: 100%;">
+
+        <div class="py-4 pl-3"> 
+        	<h2>{{idea.title}}</h2>
+			<img src="{{idea.photo.url}}" style="max-width: 200px; height: 200px; border-radius: 50%;"><br>
+			<h3 style="margin-left: 10px;">--{{idea.author}}</h3>
+			<h1>{{idea.description}}</h1>
+		
+		</div>
+
+	</div>
+</div>
+
+{% endblock %}

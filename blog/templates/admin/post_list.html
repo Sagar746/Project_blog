@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class=" my-3">
+	<h1 class="text-center">POST LIST </h1>
+	<table class="table table-hover table-bordered text-center">
+			<thead style="background: green; color: white;">
+				<tr>
+					<th style="background: red;">COUNT</th>
+					<th>POST NAME</th>
+					<th>DESCRIPTION	</th>
+					<th>CATEGORY</th>
+					<th>IMAGE</th>
+					<th>CREATED</th>
+					<th>LAST UPDATED</th>
+					<th colspan="2">ACTION</th>
+					
+				</tr>
+			</thead>
+			{% for post in posts%}
+			
+				<tr style="box-shadow: 1px 1px 20px grey;">
+				
+					<td style="">{{forloop.counter}}</td>
+					<td>
+					{{post.title}}
+					</td>
+					<td>{{post.description}}</td>
+					<td>{{post.category}}</td>
+					<td>
+						<img src="{{ post.image.url}}" style="width: 50px; height: 50px;">
+					</td>
+					<td>{{post.created}}</td>
+					<td>{{post.updated}}</td>
+					<td rowspan="">
+						<a href="{% url 'blog:post_edit' post.id %}" class="btn btn-primary">Update</a>
+					</td>
+					<td>
+						<a href="{% url 'blog:post_delete' post.id %}" class="btn btn-warning">delete</a>
+					</td>
+								
+				</tr>
+			
+			{% endfor %}
+		</table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+
+	
+	.nation-post{
+		max-width: 100%;
+		background: white;
+		height: auto;
+		text-align: center;
+		color: red;
+	}
+	.nation-post .toppost-title{
+		font-size: 34px;
+		font-weight: bold;
+		text-decoration: none;
+	}
+	
+	.toppost-description{
+		font-size: 26px;
+	}
+
+	.idea{
+		height: 600px;
+		width: 100%;
+		overflow-y: scroll;
+	}
+	.national-main{
+		width: 400px;
+
+	}
+
+	

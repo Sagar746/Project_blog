@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+
+/* top nation post starts */	
+
+.post-title1{
+	font-size: 50px;
+}
+.card .post-title1{
+	text-decoration: none;
+	color: black;
+}
+.card .post-title1:hover{
+	color: blue;
+}
+
+/*top nation post ends*/
+
+
+/* second nation post starts */
+.second-nation-post{
+	max-width: 100%;
+	max-height: 450px;
+	padding-bottom: 65px;
+
+}
+.second-nation-post .post-title2{
+	text-decoration: none;
+	color: black;
+	font-size: 26px;
+
+	
+}
+.second-nation-post .post-title2:hover{
+	color: blue;
+}
+.post-description2{
+	font-size: 19px;
+	
+}
+
+/* second nation post ends */
+
+
+
+/* nation ideas starts */
+.idea-nation{
+	margin-top: 58px;
+}
+.idea-nation .card{
+	height: 320px;
+}
+.idea-nation .nation-idea-title{
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+	padding-top: 5px;
+}
+.idea-nation .nation-idea-title:hover{
+	color: blue;
+}
+
+
+/* nation ideas ends */
+
+
+/* latest news starts */
+
+.latest-news a{
+	text-decoration: none;
+	color: black;
+}
+.latest-news a:hover{
+	color: blue;
+}
+
+
+/* latest news ends */
+
+
+
+</style>
+
+
+
+<!-- <div class="container my-5"> -->
+<div class="row my-5">
+	<div class="col-md-9">
+		<!-- top nation post starts -->
+			{% for post in posts %}
+			<div class="card pb-4 text-center first-nation-post">
+					<a href="{% url 'blog:nation_detail' post.id %}" class="post-title1">
+						{{post.title}}
+					</a>
+					<!-- {% if post.image %} -->
+					<a href="{% url 'blog:nation_detail' post.id %}" class="">
+						{% if post.image %}
+						<img src="{{post.image.url}}" style="width: 95%;">
+						{% endif %}
+					</a>
+					<!-- {% endif %} -->
+					<p class="text-center">
+						<span style="color: grey;">
+							{{post.created}}
+						</span>
+						<p class="post-description1">
+
+						{{post.description|truncatewords:15}}</p>
+					</p>
+			</div>
+			{% endfor %}
+
+		<!-- top nation post ends -->
+
+
+
+		<!--  second nation post starts -->
+		<div class="row">
+			{% for post in posts_filter %}
+			<div class="col-md-6">
+				<div class="card text-center my-2 second-nation-post">
+					<a href="" class="my-3">
+						{% if post.image %}
+					<img src="{{post.image.url}}" style="width: 90%; max-height: 180px;">
+					{% endif %}
+					</a><br>
+					<a href="" class="post-title2">{{post.title}}</a><br>
+					<p class="post-description2">
+						<small style="color: grey;">{{post.created}}</small><br>
+					{{post.description|truncatewords:15}}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<!-- second nation post ends -->
+	</div>
+
+
+	<!-- right side bar starts -->
+	<div class="col-md-3">
+		<!-- Latest news starts-->
+		<div class="latest-news">
+			<div class="card text-center">
+				<h4 class="my-2"><b>Latest News</b></h4><hr>
+				{% for post in latest_news %}
+					<a href="{% url 'blog:nation_detail' post.id %}">{{post.title}}</a><hr>
+				{% endfor %}
+			</div>
+		</div>
+		<!-- Latest news ends  -->
+
+
+
+		<!-- IDEAS STARTS  -->
+		<div class="idea-nation">
+		{% for idea in ideas %}
+		<div class="card my-3 text-center py-3">
+			<a href="">
+				<img src="{{idea.photo.url}}" style="width: 100px; height: 100px; border-radius: 50%;">
+			</a>
+			<a href="{% url 'blog:idea_detail' idea.id %}" class="nation-idea-title">{{idea.title}}
+			</a><br>
+			<p style="margin: 0 auto; font-weight: bold;">{{idea.description|truncatewords:12}}</p>
+		</div>
+		{% endfor %}
+		</div>
+		<!-- IDEAS ENDS  -->
+
+
+	</div>
+	<!-- right side bar ends -->
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="row">
+	<div class="col-12 my-4">
+		{% for p in posts %}
+		<div class="card text-center my-4">
+			<p style="font-size: 26px; font-weight: bold;">{{p.title}}</p>
+			<div class="card-body">
+				{% if p.image %}
+				<a href="{% url 'blog:home_detail' p.id%}">
+				<img src="{{p.image.url }}" style="width: 100%; height: 500px;">
+			</a>
+				{% endif %}
+			</div>
+			<p style="font-size: 19px;">{{p.description}}</p>
+			
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+
+
+ <!-- TOP HOME POSTS FILTER -->
+
+
+<!-- <div class="row">
+	{% for p in post_filter %}
+	<div class="col-md-4 my-4">
+		
+		<div class="card text-center">
+			<p style="font-size: 26px; font-weight: bold;">{{p.title}}</p>
+			<div class="card-body">
+				{% if p.image %}
+				<a href="{% url 'blog:nation_detail' p.id%}">
+				<img src="{{p.image.url }}" style="width: 100%; height: auto">
+			</a>
+				{% endif %}
+			</div>
+			<p style="font-size: 19px;">{{p.description}}</p>
+			{{post.get_category_display}}
+		</div>
+		
+	</div>
+	{% endfor %}
+</div>
+ -->
+
+<!-- national -->
+<div class="container" style="border:3px solid grey;">
+		<h3 class="text-center">NATIONAL POST</h3>
+		<hr>
+	<div class="row">
+		
+		{% for post in post_national %}
+				<div class="col-md-4">
+					
+					<div class="card text-center my-3 post" style="max-width: 500px; max-height: 500px;" >
+						<p style="font-size: 22px;">{{post.title}}</p>
+						<a href="{% url 'blog:nation_detail' post.id %}" style="">
+							<img src="{{post.image.url}}" style="width: 100%; height: 300px;">
+						</a>
+						<p style="font-size: 19px;">{{post.description|truncatewords:10}}</p>
+					</div>
+			
+				</div>
+				{% endfor %}
+			</div>
+	</div>
+</div>
+
+
+<!-- Politics -->
+<div class="container" style="border:2px solid green;">
+		<h3 class="text-center">POLITICAL POST</h3>
+		<hr>
+	<div class="row">
+		
+		{% for post in post_political %}
+				<div class="col-md-4">
+					
+					<div class="card text-center my-3 post" style="max-width: 500px; max-height: 500px;" >
+						<a href="{% url 'blog:politics_detail' post.id %}">
+						<p style="font-size: 22px;">{{post.title}}</p>
+						</a>
+						<a href="{% url 'blog:politics_detail' post.id %}" style="">
+							<img src="{{post.image.url}}" style="width: 100%; height: 300px;">
+						</a>
+						<p style="font-size: 19px;">{{post.description|truncatewords:10}}</p>
+					</div>
+			
+				</div>
+				{% endfor %}
+			</div>
+	</div>
+</div>
+
+
+
+
+				<!-- ECONOMY -->
+				
+<div class="container" style="border:2px solid green;">
+		<h3 class="text-center">ECONOMICAL POST</h3>
+		<hr>
+	<div class="row">
+		
+		{% for post in post_economy %}
+				<div class="col-md-4">
+					
+					<div class="card text-center my-3 post" style="max-width: 500px; max-height: 500px;" >
+						<a href="{% url 'blog:economy_detail' post.id %}">
+						<p style="font-size: 22px;">{{post.title}}</p>
+						</a>
+						<a href="{% url 'blog:politics_detail' post.id %}" style="">
+							<img src="{{post.image.url}}" style="width: 100%; height: 300px;">
+						</a>
+						<p style="font-size: 19px;">{{post.description|truncatewords:10}}</p>
+					</div>
+			
+				</div>
+				{% endfor %}
+			</div>
+	</div>
+</div>
+
+
+
+
+<!-- Educational -->
+<div class="container" style="border:2px solid green;">
+		<h3 class="text-center">EDUCATIONAL POST</h3>
+		<hr>
+	<div class="row">
+		
+		{% for post in post_education %}
+				<div class="col-md-4">
+					
+					<div class="card text-center my-3 post" style="max-width: 500px; max-height: 500px;" >
+						<a href="{% url 'blog:politics_detail' post.id %}">
+						<p style="font-size: 22px;">{{post.title}}</p>
+						</a>
+						<a href="{% url 'blog:politics_detail' post.id %}" style="">
+							<img src="{{post.image.url}}" style="width: 100%; height: 300px;">
+						</a>
+						<p style="font-size: 19px;">{{post.description|truncatewords:10}}</p>
+					</div>
+			
+				</div>
+				{% endfor %}
+			</div>
+	</div>
+</div>
+
+
+{% endblock %}

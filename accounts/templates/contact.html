@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+	
+
+	<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1798113.39690185!2d83.9443839!3d28.3304105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1599756126952!5m2!1sen!2snp" width="600" height="450" frameborder="0" style="border:0; width: 100%; height: 250px; margin-top: 5px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+	<div class="container my-5" >
+		<div class="row">
+			<div class="col-md-4 my-3" style="background: orange; height: 400px; line-height: 3.5">
+				<b>Address : <span>Kathmandu,Chabahil</span></b><br>
+				<bold>Contact no : <span>+977 9864573936<span><br>
+									<span>+977 9825178178</span>
+				</bold>
+				<p>Email: <cite>tiwarisagar389@gmail.com</cite></p>
+			</div>
+			<div class="col-md-6 text-center pb-3 my-3" style="width: 400px; box-shadow: 0px 0px 20px grey; margin-left: 5px;">
+				<h3>Contact Form</h3><hr>
+				{% if confirm_message %}
+				<p>{{confirm_message}}</p>
+				{% endif %}
+					{% if form %}
+					<form method="POST">
+						{% csrf_token %}
+							{{form|crispy}}
+						<button type="submit" class="btn btn-primary">
+							Contact 
+						</button>
+					</form>
+					{% endif %}
+			</div>
+		</div>
+	</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class=" my-3">
+	<h1 class="text-center">IDEA LIST </h1>
+	<table class="table table-hover table-bordered text-center">
+			<thead style="background: green; color: white;">
+				<tr>
+					<th style="background: red;">COUNT</th>
+					<th>AUTHOR</th>
+					<th>TITLE</th>
+					<th>DESCRIPTION	</th>
+					<th>PHOTO</th>
+					<th>CREATED</th>
+					<th>LAST UPDATED</th>
+					<th colspan="2">ACTION</th>
+					
+				</tr>
+			</thead>
+			{% for idea in ideas %}
+			
+				<tr style="box-shadow: 1px 1px 20px grey;">
+				
+					<td style="">{{forloop.counter}}</td>
+					<td>
+					{{idea.author}}
+					</td>
+					<td>{{idea.title}}</td>
+					<td>{{idea.description}}</td>
+					
+					<td>
+						<img src="{{ idea.photo.url}}" style="width: 50px; height: 50px;">
+					</td>
+					<td>{{idea.created}}</td>
+					<td>{{idea.updated}}</td>
+					<td rowspan="">
+						<a href="{% url 'blog:idea_edit' idea.id %}" class="btn btn-primary">Update</a>
+					</td>
+					<td>
+						<a href="{% url 'blog:idea_delete' idea.id %}" class="btn btn-warning">delete</a>
+					</td>
+								
+				</tr>
+			
+			{% endfor %}
+		</table>
+</div>
+
+{% endblock %}
